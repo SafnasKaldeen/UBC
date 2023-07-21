@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #333;
+    background-color: #381a1a;
+    padding: 10px;
+  }
+  
+  .card-table-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.card-table {
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .card h3 {
+    margin-top: 0;
+  }
+  
+  .card p {
+    margin-bottom: 0;
+  }
+  
+  .card-table-pagination {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .pagination-btn {
+    margin-right: 5px;
+  }
+  

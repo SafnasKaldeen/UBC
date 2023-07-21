@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Biology Database</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      href="/assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+
+    <link href="/assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
+
+    <!-- Table CSS Files -->
+    <link href="/assets/css/Table.css" rel="stylesheet" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="/assets/vendor/bootstrap/css/bootstrap.min2.css"
+    />
+
+    <title>UGAA Books Cloud</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+
+    <!-- Template Main CSS File -->
+    <link href="/assets/css/style.css" rel="stylesheet" />
+
+    <!-- Favicons -->
+    <link href="/assets/img/favicon.png" rel="icon" />
+    <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+  </head>
+
+  <body>
+    <div class="page-container">
+      <div class="container">
+        <h1 class="display-4">Biology Database</h1>
+        <h5>
+          Here showing the list of all the study materials we have for Biology.
+        </h5>
+
+        <div class="row mt-5 mb-3 align-items-center">
+          <div class="col-md-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search in table..."
+              id="searchField"
+            />
+          </div>
+          <div class="col-md-2 text-right">
+            <span class="pr-3">Rows Per Page:</span>
+          </div>
+          <div class="col-md-2">
+            <div class="d-flex justify-content-end">
+              <select class="custom-select" name="rowsPerPage" id="changeRows">
+                <option value="5">5</option>
+                <option value="10" selected>10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div id="root"></div>
+      </div>
+    </div>
+
+    <div class = "BTN_Set">
+      <a href = '#AddRec'><span class='Add_button'><button class='btn-hover color-11'><i class='bi bi-plus-circle-fill'></i></i></button></span></a>
+      <a href = '#EditRec'><span class='Edit_buttons'><button class='btn-hover color-12'><i class='bi bi-pencil-square'></i></i></button></span></a>
+      <a href = '#DeleteRec'><span class='Deletebuttons'><button class='btn-hover color-10'><i class='bi bi-trash'></i></i></button></span></a>
+    </div>
+
+          <!-- ======= Add Section ======= -->
+          <section id="AddRec" class="contact" style="background-image: linear-gradient(to right, #25aae1, #40e495, #30dd8a, #2bb673)">
+            <div class="container" data-aos="fade-up">
+              <div class="section-title">
+                <h2>Add Record</h2>
+                <p>
+                  If you want to add a new record...
+                </p>
+              </div>
+
+              <div class="row">                
+                <div class="col-lg-12 mt-5 mt-lg-0 d-flex align-items-stretch">
+                  <form
+                    method="post"
+                    role="form"
+                    class="php-email-form"
+                    action="/Add_Bio_Rec"
+                  >
+                    <div class="row">
+                      <div class="form-group col-md-6">
+                        <label for="Reference_Number">Reference_Number</label>
+                        <input
+                          type="text"
+                          name="Reference_Number"
+                          class="form-control"
+                          id="name"
+                          required
+                        />
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="Title">Title</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="Title"
+                          id="email"
+                          required
+                        />
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="Author">Author</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="Author"
+                          id="subject"
+                          required
+                        />   
+                      </div>             
+                      <div class="form-group col-md-6">
+                        <label for="Material_Type">Material_Type</label>
+                        <select class="form-control" name = "Material_Type" required>
+                          <option value="Other" disabled selected>Select an option...</option> 
+                          <option value="Book">Book</option>
+                          <option value="Question">Question</option>
+                          <option value="Past Paper">Past Paper</option>
+                          <option value="Notes">Notes</option>
+                          <option value="Model Paper">Model Paper</option>
+                          <option value="Other">Other</option>
+                        </select>
+                      </div>                                    
+                    </div>
+                    <div class="my-3">
+                      <div class="loading">Loading</div>
+                      <div class="error-message">Something Went Wrong</div>
+                      <div class="sent-message">
+                        Your message has been sent. Thank you!
+                      </div>
+                    </div>
+                    <div class="text-center">
+                      <button type="submit">ADD</button>
+                    </div>                    
+                  </form>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section id="EditRec" class="contact" style="  background-image: linear-gradient(to right, #25aae1, #4481eb, #04befe, #3f86ed)">
+            <div class="container" data-aos="fade-up">
+              <div class="section-title">
+                <h2>Edit Record</h2>
+                <p>
+                  If you want to edit an existing record...
+                </p>
+              </div>
+
+              <div class="row">                 
+                <div class="col-lg-12 mt-5 mt-lg-0 d-flex align-items-stretch" >
+                  <form
+                    method="post"
+                    role="form"
+                    class="php-email-form"
+                    action="/Edit_Bio_Rec"
+                  >
+                     <div class="row">
+                      <div class="form-group col-md-12" >
+                        <label for="Reference_Number">Reference_Number</label>
+                        <input
+                          type="text"
+                          name="Reference_Number"
+                          class="form-control"
+                          id="name"
+                          required
+                          placeholder="Reference_Number of the record you want to edit"
+                        />
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="Title">Title</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="Title"
+                          id="email"
+                          placeholder="Type if you want to change"
+                          required
+                        />
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="Author">Author</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="Author"
+                          id="subject"
+                          placeholder="Type if you want to change" 
+                          required                         
+                        />   
+                      </div>             
+                      <div class="form-group col-md-6">
+                        <label for="Material_Type">Material_Type</label>
+                        <select class="form-control" required name="Material_Type">
+                          <option value="Other" disabled selected>select if you want to change</option> 
+                          <option value="Book">Book</option>
+                          <option value="Question">Question</option>
+                          <option value="Past Paper">Past Paper</option>
+                          <option value="Notes">Notes</option>
+                          <option value="Model Paper">Model Paper</option>
+                          <option value="Other">Other</option>
+                        </select>
+                      </div>                                    
+                    </div>
+                    <div class="my-3">
+                      <div class="loading">Loading</div>
+                      <div class="error-message">Something Went Wrong</div>
+                      <div class="sent-message">
+                        Your message has been sent. Thank you!
+                      </div>
+                    </div>
+                    <div class="text-center">
+                      <button type="submit">UPDATE</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section id="DeleteRec" class="contact" style="background-image: linear-gradient(to right, #ff7f7f, #ff5f5f, #ff3f3f, #ff1f1f)">
+            <div class="container" data-aos="fade-up">
+              <div class="section-title">
+                <h2>Delete Record</h2>
+                <p>
+                  If you want to delete an existing record...
+                </p>
+              </div>
+              
+              <div class="row">                 
+                <div class="col-lg-12 mt-5 mt-lg-0 d-flex align-items-stretch" >
+                  <form
+                    method="post"
+                    role="form"
+                    class="php-email-form"
+                    action="/Delete_Bio_Rec"
+                  >
+                     <div class="row">
+                      <div class="form-group col-md-12" >
+                        <label for="Reference_Number">Reference_Number</label>
+                        <input
+                          type="text"
+                          name="Reference_Number"
+                          class="form-control"
+                          id="name"
+                          required
+                        />
+                      </div>                                    
+                    </div>
+                    <div class="my-3">
+                      <div class="loading">Loading</div>
+                      <div class="error-message">Something Went Wrong</div>
+                      <div class="sent-message">
+                        Your message has been sent. Thank you!
+                      </div>
+                    </div>
+                    <div class="text-center">
+                      <button type="submit">DELETE</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </section>                    
+          <!-- End Contact Section -->      
+        </main>
+        <!-- End #main -->
+    
+        <!-- ======= Footer ======= -->
+        <footer id="footer">
+          <div class="footer-top">
+            <div class="container">
+              <div class="row" style="justify-content: center ; text-align: center;">
+                <div class="col-lg-3 col-md-6 footer-links">
+                  <h4>Our Social Networks</h4>
+                  <p>You can also follow us in these social medias below</p>
+                  <div class="social-links mt-3">
+                    <a
+                      href="https://www.facebook.com/ugaa.org?mibextid=ZbWKwL"
+                      target="_blank"
+                      class="facebook"
+                      ><i class="bx bxl-facebook"></i
+                    ></a>
+                    <a
+                      href="https://instagram.com/ugaa_akkaraipattu?igshid=YmMyMTA2M2Y="
+                      target="_blank"
+                      class="instagram"
+                      ><i class="bx bxl-instagram"></i
+                    ></a>
+                    <a
+                      href="https://www.linkedin.com/company/undergraduates-association-akkaraipattu/"
+                      target="_blank"
+                      class="linkedin"
+                      ><i class="bx bxl-linkedin"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <div class="container footer-bottom clearfix">
+            <div class="copyright">
+              &copy; Copyright <strong><span>UGAA</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+              Designed by
+              <a href="https://www.instagram.com/safnas_kaldeen/" target="_blank"
+                >Safnas-Kaldeen</a
+              >
+            </div>
+          </div>
+        </footer>
+        <!-- End Footer -->
+
+        <div id="preloader"></div>
+        <a
+          href="#"
+          class="back-to-top d-flex align-items-center justify-content-center"
+          ><i class="bi bi-arrow-up-short"></i
+        ></a>
+            
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/Biology_dataSet.js"></script>
+    <script src="/assets/js/table-sortable.js"></script>
+    <script src="/assets/js/pagination.js"></script>
+    <script src="/assets/js/main.js"></script>
+  </body>
+</html>

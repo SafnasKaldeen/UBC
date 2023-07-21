@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/assets/css/card.css">
+</head>
+<body>
+    <div id="cardTable"></div>
+
+    <script src="/assets/js/card.js"></script>
+
+<script id="cardTemplate" type="text/template">
+  <div class="card-table">
+    <div class="card-table-header">
+      <input id="searchField" type="text" placeholder="Search...">
+    </div>
+    <div class="card-table-body">
+      {{#each cards}}
+      <div class="card">
+        <h3>{{title}}</h3>
+        <p>{{description}}</p>
+      </div>
+      {{/each}}
+    </div>
+    <div class="card-table-pagination">
+      <button id="prevPageBtn" class="pagination-btn" disabled>&lt;</button>
+      <span>{{currentPage}} / {{totalPages}}</span>
+      <button id="nextPageBtn" class="pagination-btn" disabled>&gt;</button>
+    </div>
+  </div>
+</script>
+<script src="/assets/js/card.js"></script>
+
+</body>
+</html>
