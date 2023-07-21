@@ -4,6 +4,7 @@
   "description": "This is an official webApplication of UnderGraduateAssociation Akkaraipattu Library Cloud Made by Kaldeen Mohamed Safnas... As the name suggests, this is the place where you can find books and study materials for Advanced level students. The members of Undergraduates Association of Akkaraipattu (UGAA), have noticed a lot of students who have a big thirst to study yet they find it hard to get some study materials. Therefore they have come up with a plan to collect notes and materials from old students who literally have no need of their used ones, organize them as a library and give away to the ones who are in need of them. This is the most suitable place for you If you are an advanced level student where you can search for the study materials you need, reserve them for you, borrow them and as well as get guidance for your studies if you want.",
   "main": "DB.js",
   "scripts": {
+    "build" : "npm run build",
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
