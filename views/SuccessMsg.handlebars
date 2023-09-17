@@ -242,7 +242,7 @@
         <div class="shadow scale"></div>
         <div class="message">
           <h1 class="alert">Success!</h1>
-          <p>yay, user has been added successfully.</p>
+          <p>{{message}}</p>
         </div>
         <button id="redirectButton" class="button-box"><h1 class="green">continue</h1></button>
       </div>
@@ -271,8 +271,9 @@
 
         // Add a click event listener to the button
         redirectButton.addEventListener('click', function() {
-            // Redirect the user to the desired page when the button is clicked
-            window.location.href = '/admin_portfolio'; // Replace with the URL you want to redirect to
+            // Log the credentails to the console
+            console.log('redirecting to previous page');
+            window.history.back();
         });
     </script>
   </body>

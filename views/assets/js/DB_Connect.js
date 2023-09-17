@@ -1,10 +1,9 @@
-const mysql = require('mysql')
+const mysql = require("mysql");
+
+require("dotenv").config();
 
 //Create Connection
-const db = mysql.createConnection({
-    host        :   'localhost',
-    user        :   'root',  
-    password    :   'CyberFlash2000@',
-    database    :   'ugaa_book_cloud'});
+const db = mysql.createConnection(process.env.DATABASE_URL);
+console.log("Connected to PlanetScale!");
 
 module.exports = db;
