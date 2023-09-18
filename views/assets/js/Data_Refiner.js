@@ -13,7 +13,7 @@ function DATA_CLEANER(JSON_STRING) {
     ',"Availablity"',
     ",\n      Availablity"
   );
-  var JSON_STRING = JSON_STRING.replaceAll('"S.No"', "S.No");
+  //
   var JSON_STRING = JSON_STRING.replaceAll("{", "\n   {\n");
   var JSON_STRING = JSON_STRING.replaceAll("}", "\n   }\n");
 
