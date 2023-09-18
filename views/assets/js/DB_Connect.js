@@ -3,8 +3,8 @@ const mysql = require("mysql");
 // Create Connection
 const db = mysql.createConnection({
   host: "aws.connect.psdb.cloud",
-  user: "q4psex3e2zvtl51l0j8g",
-  password: "pscale_pw_lInKwyU1U5pYZbdqRy58fn0jP8L41xYLDBaPEtjXgvK",
+  user: "2ro6b6xfkn7gd2ue8h7n",
+  password: "pscale_pw_t3Flj58IeA7Bp8bgRdvfGYoWggMMD9nK8gBrpmc0n1L",
   database: "ugaa-book-cloud",
   ssl: {
     rejectUnauthorized: true,
