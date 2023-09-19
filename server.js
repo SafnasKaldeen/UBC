@@ -32,7 +32,6 @@ const {
   User_Columns,
   Borrow_Columns,
 } = require("./views/assets/js/Data_Refiner.js");
-const c = require("config");
 
 const app = express();
 
@@ -51,11 +50,86 @@ app.engine(
   })
 );
 
+// Function to perform a database query and return a Promise
+function queryDatabase(query) {
+  return new Promise((resolve, reject) => {
+    db.query(query, (err, result) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+}
+
+// Initialize the variables
+let mathsCount = 0;
+let physicsCount = 0;
+let chemistryCount = 0;
+let biologyCount = 0;
+
+// Function to retrieve counts from the database
+async function updateCounts() {
+  try {
+    const [mathsResult, physicsResult, chemistryResult, biologyResult] =
+      await Promise.all([
+        queryDatabase("SELECT COUNT(*) FROM maths"),
+        queryDatabase("SELECT COUNT(*) FROM physics"),
+        queryDatabase("SELECT COUNT(*) FROM chemistry"),
+        queryDatabase("SELECT COUNT(*) FROM biology"),
+      ]);
+
+    mathsCount = Math.round(mathsResult[0]["count(*)"]);
+    physicsCount = Math.round(physicsResult[0]["count(*)"]);
+    chemistryCount = Math.round(chemistryResult[0]["count(*)"]);
+    biologyCount = Math.round(biologyResult[0]["count(*)"]);
+  } catch (error) {
+    console.error("Error querying database:", error);
+    throw error; // You can choose to handle or propagate the error
+  }
+}
+
+// Export a function to retrieve the values
+module.exports = () => {
+  return {
+    getMathsCount: () => mathsCount,
+    getPhysicsCount: () => physicsCount,
+    getChemistryCount: () => chemistryCount,
+    getBiologyCount: () => biologyCount,
+  };
+};
+
 app.use(express.static("views"));
 app.set("view engine", "handlebars");
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("index", {
+    mathsCount: mathsCount,
+    physicsCount: physicsCount,
+    chemistryCount: chemistryCount,
+    biologyCount: biologyCount,
+    mathsPercentage: Math.round(
+      (mathsCount /
+        (mathsCount + physicsCount + chemistryCount + biologyCount)) *
+        100
+    ),
+    physicsPercentage: Math.round(
+      (physicsCount /
+        (mathsCount + physicsCount + chemistryCount + biologyCount)) *
+        100
+    ),
+    BioPercentage: Math.round(
+      (biologyCount /
+        (mathsCount + physicsCount + chemistryCount + biologyCount)) *
+        100
+    ),
+    chemistryPercentage: Math.round(
+      (chemistryCount /
+        (mathsCount + physicsCount + chemistryCount + biologyCount)) *
+        100
+    ),
+  });
 });
 
 app.get("/Admin_Login", (req, res) => {
@@ -726,7 +800,10 @@ app.get("/PlayGround", (req, res) => {
   res.render("PlayGround");
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`App is listening on port ${PORT}`);
+// Call the function to initially update the counts
+updateCounts().then(() => {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`App is listening on port ${PORT}`);
+  });
 });

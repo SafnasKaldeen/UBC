@@ -1015,6 +1015,15 @@ var data = [
       Reference_Number:"008/10/Q/13/MA",
       Availablity:"Available"
    }
+,
+   {
+"S.No":114,
+      Material_Type:"Other",
+      Title:"Practical Book",
+      Author:"NIE",      Borrow:"<a href = '#Borrow'><div class='buttons'><button class='btn-hover color-9'><i class='bi bi-bootstrap-fill'></i></i></button></div></a>",
+      Reference_Number:"008/10/Q/13/MA",
+      Availablity:"Available"
+   }
 ]
 
 var columns = {
