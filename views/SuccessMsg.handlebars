@@ -266,15 +266,21 @@
       {{/if}}
     </div>
     <script>
-        // Get a reference to the button element
-        const redirectButton = document.getElementById('redirectButton');
+      // Get a reference to the button element
+      const redirectButton = document.getElementById('redirectButton');
 
-        // Add a click event listener to the button
-        redirectButton.addEventListener('click', function() {
-            // Log the credentails to the console
-            console.log('redirecting to previous page');
-            window.history.back();
-        });
+      // Add a click event listener to the button
+      redirectButton.addEventListener('click', function () {
+        // Log the credentails to the console
+        console.log('Redirecting to the home page');
+
+        // Use window.location to navigate to the home page
+        window.location.href = '/'; // Replace '/' with the actual URL of your home page
+      });
     </script>
+</body>
+
+</html>
+
   </body>
 
