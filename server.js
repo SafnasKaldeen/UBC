@@ -155,7 +155,7 @@ app.get("/Admin_Login", (req, res) => {
 });
 
 app.get("/User_Login", (req, res) => {
-  res.render("User_login");
+  res.render("User_Login");
 });
 
 // Middleware for Admin authentication
