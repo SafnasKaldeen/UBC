@@ -8,6 +8,8 @@ const fs = require("fs");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const db = require("./views/assets/js/DB_Connect.js");
+const https = require("https");
+const axios = require("axios");
 const {
   Add_Admin,
   Add_User,
@@ -129,6 +131,22 @@ app.get("/", (req, res) => {
         (mathsCount + physicsCount + chemistryCount + biologyCount)) *
         100
     ),
+  });
+});
+
+app.post("/FormPosting", (req, res) => {
+  axios
+    .post("https://formspree.io/f/xpzgzkla", req.body)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+  return res.status(200).render("SuccessMsg", {
+    showSuccessCard: true,
+    message: "Our team will contact you!",
   });
 });
 
