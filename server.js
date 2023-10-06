@@ -520,7 +520,6 @@ app.post("/User_Register", (req, res) => {
   } = req.body;
   // File Upload Code for NIC Pictures
   let sampleFile = req.files.sampleFile;
-  let uploadFolderPath = `./views/assets/img/NIC_Images/${NIC_Number}`;
 
   // Check the user if alrady exists
   if (fs.existsSync(uploadFolderPath)) {
