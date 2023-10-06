@@ -518,43 +518,33 @@ app.post("/User_Register", (req, res) => {
     School,
     ID,
   } = req.body;
-  // File Upload Code for NIC Pictures
-  let sampleFile = req.files.sampleFile;
 
-  // Check the user if alrady exists
-  if (fs.existsSync(uploadFolderPath)) {
-    res.render("SuccessMsg", {
-      showSuccessCard: false,
-      message: "This user NIC already exists !",
-    });
-  }
-
-  // Create a new folder to uload NIC
-  fs.mkdir(uploadFolderPath, { recursive: true }, (err) => {
-    if (err) {
-      res.render("SuccessMsg", { showSuccessCard: false });
-    } else {
-      sampleFile.mv(uploadFolderPath + "/" + sampleFile.name, function (err) {
-        Add_User(
-          Full_Name,
-          Name_with_Initials,
-          Email,
-          Contact_Number,
-          Whatsapp_Number,
-          NIC_Number,
-          Address,
-          School,
-          ID
-        ).then((results) => {});
-
-        res.render("SuccessMsg", {
-          showSuccessCard: true,
-          message: "User Added Successfully !",
-        });
+  Add_User(
+    Full_Name,
+    Name_with_Initials,
+    Email,
+    Contact_Number,
+    Whatsapp_Number,
+    NIC_Number,
+    Address,
+    School,
+    ID
+  )
+    .then((results) => {
+      res.render("SuccessMsg", {
+        showSuccessCard: true,
+        message: "User Added Successfully !",
       });
-    }
-  });
+    })
+    .catch((err) => {
+      res.send(err);
+      res.status(500).render("SuccessMsg", {
+        showSuccessCard: false,
+        message: "There is an error in Adding this user!",
+      });
+    });
 });
+
 app.get("/admin_portfolio", authenticateAdminToken, (req, res) => {
   res.render("Admin_portfolio-details");
 });
