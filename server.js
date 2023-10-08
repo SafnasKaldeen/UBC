@@ -544,6 +544,7 @@ app.post("/User_Register", (req, res) => {
       });
     });
 });
+
 app.get("/admin_portfolio", authenticateAdminToken, (req, res) => {
   res.render("Admin_portfolio-details");
 });
